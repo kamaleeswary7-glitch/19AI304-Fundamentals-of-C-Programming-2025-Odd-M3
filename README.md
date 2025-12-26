@@ -27,8 +27,25 @@ To formulate a C program to convert a decimal number into its binary equivalent 
   Display the binary digits in reverse order (from i-1 down to 0).
 ### Step 8: 
    Stop
-# Program:
-# Output:
+# Program:#include <stdio.h>
+int main()
+{
+    
+    int dec;
+    scanf("%d",&dec);
+    int temp = dec,bin=0,rem,place=1;
+    while(dec!=0)
+    {  
+        rem=dec%2;
+        bin=bin+(rem*place);
+        dec=dec/2;
+        place=place*10;
+    }
+    printf("%d in decimal = %d in binary",temp,bin);
+    return 0;
+}
+# Output:![WhatsApp Image 2025-12-26 at 7 04 09 PM](https://github.com/user-attachments/assets/5f7796ac-4e02-4726-bbed-f76028bf73cc)
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -66,8 +83,57 @@ Thus, the program was implemented and executed successfully, and the required ou
 - Print the saddle point value and its position.
 ### Step 9: 
   Stop
-# Program:
-# Output:
+# Program:#include <stdio.h>
+
+int main() {
+    int a[10][10], r, c, i, j;
+    int min, colIndex;
+    int saddleFound = 0;
+
+    printf("Enter number of rows and columns: ");
+    scanf("%d %d", &r, &c);
+
+    printf("Enter the matrix elements:\n");
+    for (i = 0; i < r; i++) {
+        for (j = 0; j < c; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    for (i = 0; i < r; i++) {
+        // Find minimum element in the row
+        min = a[i][0];
+        colIndex = 0;
+
+        for (j = 1; j < c; j++) {
+            if (a[i][j] < min) {
+                min = a[i][j];
+                colIndex = j;
+            }
+        }
+
+        // Check if this minimum is maximum in its column
+        int k;
+        for (k = 0; k < r; k++) {
+            if (a[k][colIndex] > min)
+                break;
+        }
+
+        if (k == r) {
+            printf("Saddle point found at position (%d, %d)\n", i, colIndex);
+            printf("Saddle point value: %d\n", min);
+            saddleFound = 1;
+            break;
+        }
+    }
+
+    if (!saddleFound)
+        printf("No saddle point found.\n");
+
+    return 0;
+}
+# Output:![WhatsApp Image 2025-12-26 at 7 07 44 PM](https://github.com/user-attachments/assets/83a9cb0a-0872-4da4-a86f-af9ddd40dfa3)
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -100,8 +166,27 @@ Thus, the program was implemented and executed successfully, and the required ou
   Print the reversed string.
 ### Step 10: 
   Stop
-# Program:
-# Output:
+# Program:#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100];
+    int i, length;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    length = strlen(str);
+
+    printf("Reversed string: ");
+    for (i = length - 1; i >= 0; i--) {
+        printf("%c", str[i]);
+    }
+
+    return 0;
+}
+# Output:![WhatsApp Image 2025-12-26 at 7 11 28 PM](https://github.com/user-attachments/assets/b22fa4b2-920f-4eaa-962f-460151feada8)
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -134,8 +219,32 @@ Thus, the program was implemented and executed successfully, and the required ou
   Repeat Step 6 for all characters.
 ### Step 8:
   Stop
-# Program:
-# Output:
+# Program:#include <stdio.h>
+
+int main() {
+    char str[100];
+    int freq[256] = {0};   // ASCII characters
+    int i;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    // Count frequency of each character
+    for (i = 0; str[i] != '\0'; i++) {
+        freq[(int)str[i]]++;
+    }
+
+    printf("Character frequencies:\n");
+    for (i = 0; i < 256; i++) {
+        if (freq[i] != 0) {
+            printf("%c = %d\n", i, freq[i]);
+        }
+    }
+
+    return 0;
+}
+# Output:![WhatsApp Image 2025-12-26 at 7 16 04 PM](https://github.com/user-attachments/assets/bcd0e9d9-8e4e-42fb-a478-170b67891574)
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -168,8 +277,36 @@ Thus, the program was implemented and executed successfully, and the required ou
   Print all words that are not marked as duplicates.
 ### Step 8: 
   Stop
-# Program:
-# Output:
+# Program:#include<stdio.h>
+int main()
+{
+    int arr[]={54,61,7,5,54,5,54,5};
+    int n=6;
+    int result[100];
+    int i,j,k=0;
+    int dup;
+    for(i=0;i<n;i++)
+    {
+        dup=0;
+        for(j=0;j<k;j++)
+        {
+            if(arr[i]==result[j])
+            {
+                dup=1;
+                break;
+            }
+        }if(!dup){
+            result[k++]=arr[i];
+        }
+    }
+    for(i=0;i<k;i++){
+        printf("%d ",result[i]);
+    }
+    return 0;
+}
+# Output:![Uploading WhatsApp Image 2025-12-26 at 7.16.21 PM.jpeg…]()
+
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
